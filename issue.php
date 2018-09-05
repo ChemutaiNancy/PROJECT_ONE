@@ -24,6 +24,7 @@
                             <th>Names</th>
                             <th>Phone No</th>
                             <th>Issue</th>
+                            <th>Payment History</th>
                         </tr>
                     </thead>
 
@@ -43,6 +44,7 @@
                                         <td>$names</td>
                                         <td>$phone_no</td>
                                         <td><a href='process.php?customer_id=$customer_id&names=$names' class='btn btn-dark btn-sm'>Issue Loan</a></td>
+                                        <td><a href='history.php?customer_id=$customer_id&names=$names' class='btn btn-success btn-sm'>Payment History</a></td>
                                     </tr>";
                             }
                         ?>
