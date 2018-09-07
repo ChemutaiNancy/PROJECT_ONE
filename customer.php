@@ -1,4 +1,6 @@
 <?php
+
+    require "protect.php";
     require "db.php";
 
     $message = "";
@@ -42,6 +44,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<?php
+include "nav.php";
+?>
 
     <div class="container">
         <h2 class="text-center">Customer Details</h2>

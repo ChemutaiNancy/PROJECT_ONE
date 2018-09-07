@@ -1,5 +1,6 @@
 
 <?php
+require "protect.php";
 require "db.php";
 
 $names = "";
@@ -22,12 +23,20 @@ if (isset($_POST["amount"]))
 
     $sql = "update loans set total_repayment = total_repayment - $amount where loan_id = $loan_id";
 
-    $sql2 = "INSERT INTO `repayments`(`repayment_id`, `customer_id`, `amount`, `date_repaid`, `loan_id`) 
+    $sql2 = "INSERT INTO `repayments`(`repayment_id`, `customer_id`, `repayment_amount`, `date_repaid`, `loan_id`) 
               VALUES (null,$customer_id,$amount,'$date_repaid',$loan_id)";
 
     mysqli_query($conn, $sql);
 
     mysqli_query($conn, $sql2);// or die(mysqli_error($conn));
+
+//    echo $sql;
+//
+//    echo "<br>";
+//
+//    echo $sql2;
+//
+//    die();
 
     header("location:outstanding.php");
 }
@@ -47,6 +56,11 @@ if (isset($_POST["amount"]))
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<?php
+include "nav.php";
+?>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-4">

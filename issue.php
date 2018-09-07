@@ -1,4 +1,6 @@
-
+<?php
+require "protect.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +15,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<?php
+include "nav.php";
+?>
+
     <div class="container">
         <h2 class="text-center">Issuance of Loan</h2>
         <div class="row">
@@ -24,7 +31,6 @@
                             <th>Names</th>
                             <th>Phone No</th>
                             <th>Issue</th>
-                            <th>Payment History</th>
                         </tr>
                     </thead>
 
@@ -44,7 +50,6 @@
                                         <td>$names</td>
                                         <td>$phone_no</td>
                                         <td><a href='process.php?customer_id=$customer_id&names=$names' class='btn btn-dark btn-sm'>Issue Loan</a></td>
-                                        <td><a href='history.php?customer_id=$customer_id&names=$names' class='btn btn-success btn-sm'>Payment History</a></td>
                                     </tr>";
                             }
                         ?>

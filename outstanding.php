@@ -1,4 +1,6 @@
-
+<?php
+require "protect.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +15,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<?php
+include "nav.php";
+?>
+
 <div class="container">
     <h2 class="text-center">Outstanding Loans</h2>
     <div class="row">
@@ -26,6 +33,7 @@
                     <th>Outstanding amount</th>
                     <th>Due Date</th>
                     <th>Repay</th>
+                    <th>Payment History</th>
                 </tr>
                 </thead>
 
@@ -34,7 +42,7 @@
                 require "db.php";
 
                 $sql = "SELECT customers.customer_id, customers.names, customers.id_no, loans.amount, loans.total_repayment, loans.loan_id, loans.due_date 
-                          FROM customers INNER JOIN loans ON customers.customer_id = loans.customer_id where loans.total_repayment > 0";
+                          FROM customers INNER JOIN loans ON customers.customer_id = loans.customer_id where loans.total_repayment > 0 and status = 'good'";
 
                 $result = mysqli_query($conn, $sql);
 
@@ -48,6 +56,7 @@
                                         <td>$total_repayment</td>
                                         <td>$due_date</td>
                                         <td><a href='repay.php?customer_id=$customer_id&names=$names&amount=$amount&outstanding=$total_repayment&loan_id=$loan_id' class='btn btn-info btn-sm'>Repay loan</a></td>
+                                        <td><a href='history.php?customer_id=$customer_id&names=$names&amount=$amount&outstanding=$total_repayment&loan_id=$loan_id' class='btn btn-success btn-sm'>Payment History</a></td>
                                     </tr>";
                 }
                 ?>

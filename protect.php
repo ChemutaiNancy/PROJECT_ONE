@@ -1,7 +1,11 @@
+
+
 <?php
-/**
- * Created by PhpStorm.
- * User: Chemutai
- * Date: 06/09/2018
- * Time: 11:10
- */
+//protect other files from unauthorized access
+
+SESSION_start();
+
+if (!isset($_SESSION["names"]))
+{
+  header("location:login.php");
+}

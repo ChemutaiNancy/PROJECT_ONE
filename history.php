@@ -1,8 +1,8 @@
 <?php
+require "protect.php";
 require "db.php";
 
 $names = "";
-$amount = "";
 $repayment_amount = "";
 $customer_id = "";
 
@@ -31,6 +31,11 @@ if (isset($_GET["names"]))
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<?php
+include "nav.php";
+?>
+
 <div class="container">
     <h2 class="text-center">Loan history of <?=$names?></h2>
     <div class="row justify-content-center">
@@ -38,8 +43,6 @@ if (isset($_GET["names"]))
             <table class="table table-primary">
                 <thead>
                 <tr>
-                    <th>Names</th>
-                    <th>Loan</th>
                     <th>Amount</th>
                     <th>Date Repaid</th>
                 </tr>
@@ -49,18 +52,18 @@ if (isset($_GET["names"]))
                 <?php
                 require "db.php";
 
-                $sql = "SELECT customers.customer_id, customers.names, loans.amount, repayments.repayment_amount, repayments.date_repaid
-                FROM customers INNER JOIN loans INNER JOIN repayments ON customers.customer_id = loans.customer_id = repayments.customer_id 
-                where customers.customer_id = $customer_id";
+                $sql = "SELECT * FROM repayments WHERE loan_id = $loan_id and customer_id = $customer_id";
 
-                $result = mysqli_query($conn, $sql);
+                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+//                echo $sql;
+//
+//                die();
 
                 while ($row=mysqli_fetch_assoc($result))
                 {
                     extract($row);
                     echo "<tr>
-                                        <td>$names</td>
-                                        <td>$amount</td>
                                         <td>$repayment_amount</td>
                                         <td>$date_repaid</td>
                                     </tr>";
@@ -68,7 +71,6 @@ if (isset($_GET["names"]))
                 ?>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
