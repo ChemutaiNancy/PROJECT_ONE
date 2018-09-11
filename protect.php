@@ -3,7 +3,7 @@
 <?php
 //protect other files from unauthorized access
 
-SESSION_start();
+session_start();
 
 if (!isset($_SESSION["names"]))
 {

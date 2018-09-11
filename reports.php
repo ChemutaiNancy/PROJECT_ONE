@@ -1,6 +1,7 @@
 <?php
 require "protect.php";
 require "db.php";
+require "admin_protector.php";
 
 //counting users
 $users_sql = "select count(names) as users from users";

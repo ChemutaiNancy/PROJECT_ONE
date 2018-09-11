@@ -33,6 +33,7 @@ $form_password = mysqli_real_escape_string($conn, $upassword);
             session_start();
             $_SESSION["names"] = $names;
             $_SESSION["user_id"] = $user_id;
+            $_SESSION["type"] = $type;
 
             header("location:customer.php");
         }
@@ -87,7 +88,6 @@ $form_password = mysqli_real_escape_string($conn, $upassword);
 
                 <button type="submit" class="btn btn-primary btn-sm">Sign Up</button>
 
-                <a href="register.php" type="submit" class="btn btn-primary btn-sm">Register</a>
             </form>
         </div>
     </div>

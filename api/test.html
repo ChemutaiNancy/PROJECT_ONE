@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<table class="table">
+    <tr>
+        <td>Names</td>
+        <td>Amount</td>
+        <td>Due Date</td>
+    </tr>
+
+
+</table>
+
+    <script>
+        // <!--jquery-->
+        $.get('api.php', function (data, status) {
+            //logic
+            console.log(data);//display in the browser
+            //
+            // var jsonArray=JSON.parse(data);
+            for (var i=0; i<data.length; i++)
+            {
+                var customer = data[i];
+                console.log(customer.names);
+
+                $('.table').append('<tr>\n' +
+                    '        <td>'+customer.names+'</td>\n' +
+                    '        <td>'+customer.amount+'</td>\n' +
+                    '        <td>'+customer.due_date+'</td>\n' +
+                    '    </tr>');
+            }
+        });
+
+        //vue js, angular js, react js frameworks for frontend
+    </script>
+</body>
+</html>
+

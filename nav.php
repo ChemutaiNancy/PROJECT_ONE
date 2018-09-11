@@ -14,6 +14,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="outstanding.php">Outstanding Loans</a>
             </li>
+
+            <?php if ($_SESSION["type"]==2):?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="reports.php">Reports</a>
+                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="register.php">Register</a>
+                </li>
+
+            <?php endif; ?>
         </ul>
 
         <ul class="navbar-nav ml-auto">

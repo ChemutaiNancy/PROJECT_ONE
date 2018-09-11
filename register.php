@@ -1,6 +1,8 @@
 <?php
 
 require "db.php";
+require "protect.php";
+require "admin_protector.php";
 
 $message = "";
 
@@ -15,7 +17,7 @@ if (isset($_POST["names"])){
 
     $hashed = password_hash($password, PASSWORD_BCRYPT);
 
-    $sql = "insert into users values (null, '$names', '$email', '$hashed')";
+    $sql = "insert into users values (null, '$names', '$email', '$hashed', 1)";
 
     /*echo $sql;
 
@@ -47,6 +49,11 @@ if (isset($_POST["names"])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+
+<?php
+include "nav.php";
+?>
 
 <div class="container">
     <h2 class="text-center">New User Registration</h2>
